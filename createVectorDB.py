@@ -1,6 +1,6 @@
 import os
 import json
-from utils import generate_embedding, pinecone, split_questions, pages
+from utils import generate_embedding, split_questions, pages, pc
 
 
 def create_pc_index(index_name):
@@ -15,15 +15,11 @@ def create_pc_index(index_name):
     )
 
 def process_and_upsert_pages(index_name, pages):
-    create_pc_index(index_name)
-
     for page_num, text in pages.items():
         embedding = generate_embedding(text)
         pc.Index("prophet-equifax").upsert(vectors=[{"id": page_num, "values": embedding}])
 
-def process_and_upsert_questions(index_name, question_bank):
-    create_pc_index(name)
-
+def process_and_upsert_questions(index_name, qb):
     for p_num in qb:
         if len(qb[p_num]) == 1:
             curr_q_list = split_questions(qb[p_num])
@@ -38,21 +34,8 @@ def main():
     load_env_file('.env')
 
     # Create indices
-    create_index(
-        name="prophet-equifax",
-        dimension=256,
-        metric="cosine",
-        cloud="aws",
-        region="us-west-2"
-    )
-
-    create_index(
-        name="prophet-equifax-qb",
-        dimension=256,
-        metric="cosine",
-        cloud="aws",
-        region="us-west-2"
-    )
+    create_pc_index("prophet-equifax")
+    create_pc_index("prophet-equifax-qb")
 
     # Load question bank data
     with open('gpt_generated_question_bank.json', 'r') as file:
