@@ -26,11 +26,20 @@ To populate the Pinecone vector database with the provided files, run the main s
 ```sh
 python createVectorDB.py
 ```
+
 This script will:
 
 Create two indices: prophet-equifax and prophet-equifax-qb.
 Process and upsert page content and question bank data into the respective indices.
 
+### 4. Streamlit App
+
+To launch the Q/A chatbot interface using Streamlit, run the following command:
+
+```sh
+streamlit run app.py
+```
+This will start the Streamlit server and open the app in your default web browser. You can then interact with the chatbot interface to ask questions about security operations and get detailed responses.
 
 ### Folder Structure
 model_development/: Contains evaluation folder and notebook with R&D work. Please refer to this for a details on implementation and evaluation approaches. 
@@ -44,19 +53,19 @@ requirements.txt: List of required Python libraries.
 Evaluation Approaches
 The project includes an evaluations folder with three files, each representing different approaches for evaluating the question bank:
 
-Benchmark Approach: This file contains the initial benchmark approach for evaluating the question bank.
-AI-Generated Question Bank: This file includes evaluations with AI-generated questions.
-Refined Prompts and Question Bank: This file contains evaluations with refined prompts and an improved question bank.
-Each approach was evaluated on the same set of questions compared to expert answers. The scores were as follows:
+- Benchmark Approach: This file contains the initial benchmark approach for evaluating the question bank.
+- AI-Generated Question Bank: This file includes evaluations with AI-generated questions.
+- Refined Prompts and Question Bank: This file contains evaluations with refined prompts and an improved question bank.
+Each approach was evaluated on the same set of questions compared to expert answers. The scores (0-100) were as follows:
 
-Benchmark Approach: 71.25
-AI-Generated Question Bank: 76.925
-Refined Prompts and Question Bank: 78.25
+- Benchmark Approach: 71.25
+- AI-Generated Question Bank: 76.925
+- Refined Prompts and Question Bank: 78.25
 The evaluations were conducted by me and vetted by my brother, a cybersecurity analyst who has worked with this data before for a report.
 
 ### Next Steps
 To further improve the performance, the following approaches can be considered:
 
-Smaller Chunks: This approach aims to mitigate the "lost in the middle" problem by breaking down the content into smaller, more manageable chunks.
-Graph RAG (Retrieval-Augmented Generation): This approach aims to synthesize larger contexts, making it easier to handle and retrieve relevant information.
+- Smaller Chunks: This approach aims to mitigate the "lost in the middle" problem by breaking down the content into smaller, more manageable chunks.
+- Graph RAG (Retrieval-Augmented Generation): This approach aims to synthesize larger contexts, making it easier to handle and retrieve relevant information.
 
