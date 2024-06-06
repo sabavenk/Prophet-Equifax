@@ -42,11 +42,11 @@ streamlit run app.py
 This will start the Streamlit server and open the app in your default web browser. You can then interact with the chatbot interface to ask questions about security operations and get detailed responses.
 
 ### Folder Structure
-model_development/: Contains evaluation folder and notebook with R&D work. Please refer to this for a details on implementation and evaluation approaches. 
-createVectorDB.py: Main script to create and populate Pinecone indices.
-utils.py: Utility functions for embedding generation and Pinecone operations.
-.env: File to store environment variables (not included in the repository for security reasons).
-requirements.txt: List of required Python libraries.
+- model_development/: Contains evaluation folder and notebook with R&D work. Please refer to this for a details on implementation and evaluation approaches. 
+- createVectorDB.py: Main script to create and populate Pinecone indices.
+- utils.py: Utility functions for embedding generation and Pinecone operations.
+- .env: File to store environment variables (not included in the repository for security reasons).
+- requirements.txt: List of required Python libraries.
 
 
 ### Design and Implementation
