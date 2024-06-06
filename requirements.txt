@@ -1,0 +1,14 @@
+aiohttp==3.9.5
+datetime
+numpy==1.26.4
+openai==1.31.0
+pandas==2.2.1
+pinecone-client==4.1.0
+prometheus_client==0.20.0
+pypdf2==3.0.1
+python-dotenv
+requests==2.31.0
+streamlit==1.35.0
+tiktoken==0.7.0
+torch==2.2.2
+tqdm==4.66.2
