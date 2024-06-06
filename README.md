@@ -1,6 +1,6 @@
 # Equifax Prophet Project
 
-This repository contains a Python project to create and populate Pinecone indices with OpenAI embeddings for Equifax data. The project includes scripts for setting up the environment, processing data, and evaluating different approaches for generating and refining question banks.
+This repository contains a Python project to create and populate Pinecone indices with OpenAI embeddings for Equifax data. The project includes scripts for setting up the environment, processing data, and evaluating different RAG approaches including generating question banks and embedding search.
 
 ## Setup Instructions
 
