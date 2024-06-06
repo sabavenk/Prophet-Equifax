@@ -120,27 +120,27 @@ def process_query(system_message, query, pages=pages, use_qb_index=True, model=G
 
     return chunks, answer
 
-    def split_questions(input_list):
-        questions = []
+def split_questions(input_list):
+    questions = []
+
+    for item in input_list:
+        # Remove leading/trailing whitespace
+        item = item.strip()
+        
+        # Check if the item has numbered questions
+        if re.match(r'^\d+\.', item):
+            # Split based on numbered pattern e.g., '1.', '2.', etc.
+            split_items = re.split(r'\d+\.\s+', item)
+            # Remove any empty strings resulting from the split
+            split_items = [q for q in split_items if q.strip()]
+            questions.extend(split_items)
+        else:
+            # Split non-numbered questions by newline followed by space or at least one space
+            split_items = re.split(r'\n\s*|\s*\n\s*', item)
+            split_items = [q.strip('"').strip() for q in split_items if q.strip()]
+            questions.extend(split_items)
     
-        for item in input_list:
-            # Remove leading/trailing whitespace
-            item = item.strip()
-            
-            # Check if the item has numbered questions
-            if re.match(r'^\d+\.', item):
-                # Split based on numbered pattern e.g., '1.', '2.', etc.
-                split_items = re.split(r'\d+\.\s+', item)
-                # Remove any empty strings resulting from the split
-                split_items = [q for q in split_items if q.strip()]
-                questions.extend(split_items)
-            else:
-                # Split non-numbered questions by newline followed by space or at least one space
-                split_items = re.split(r'\n\s*|\s*\n\s*', item)
-                split_items = [q.strip('"').strip() for q in split_items if q.strip()]
-                questions.extend(split_items)
-        
-        # Final cleaning to ensure no leading/trailing whitespace
-        questions = [q.strip() for q in questions if q.strip()]
-        
-        return questions
+    # Final cleaning to ensure no leading/trailing whitespace
+    questions = [q.strip() for q in questions if q.strip()]
+    
+    return questions
