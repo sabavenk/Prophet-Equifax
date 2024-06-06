@@ -73,8 +73,8 @@ The generate_embedding function in utils.py uses OpenAI's embedding API to conve
 Pinecone is used to store these embeddings, enabling efficient similarity search. Two indices are created: prophet-equifax for page content and prophet-equifax-qb for question bank data (generated using gpt-3.5-turbo)
 
 ### Challenges Faced
-- Data Preparation: Ensuring the dataset was both large enough for a RAG system to be required and small enough to be inspected manually was tricky. Parsing PDFs can also be a hassle and fortunately nearly all the data except for a chart was in text form. The preprocessing steps involved to clean and tokenize text data effectivel was minimal but creating the evaluation dataset took time and was no way to automate getting expert answers. 
-- Approaches: 
+- Data Preparation and Eval: Ensuring the dataset was both large enough for a RAG system to be required and small enough to be inspected manually was tricky. Parsing PDFs can also be a hassle and fortunately nearly all the data except for a chart was in text form. The preprocessing steps involved to clean and tokenize text data effectivel was minimal but creating the evaluation dataset took time and was no way to automate getting expert answers. 
+- RAG Approaches: Noticed that the base RAG was peforming around 70% and struggled with recalling specific facts when indexed by page. Most of the errors were due to not retrieving the correct page or retriving it but missing the critical information due to 'lost-in-the-middle' problem where if answer is in the middle of a longer context then it's more likely to be missed in the end. The idea to mitigate these were to introduce a question bank to enhance the retrieval accuracy with a more direct apple-to-apple comparisons between queries and questions a page is capable of answering. The second approach was simply enhancing the system prompt with a role and more detailed task description along with a 'reminders' prompt at the end to mitigate 'lost-in-the-middle' effect. 
 
 ### Evaluations
 The project includes an evaluations folder with three files, each representing different approaches for evaluating the question bank:
