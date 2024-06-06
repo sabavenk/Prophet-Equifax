@@ -4,7 +4,7 @@ from utils import process_query, pages, SYSTEM_PROMPT
 
 # Streamlit app layout
 st.title("SecOps Q/A Chatbot")
-st.write("Ask questions about security operations and get detailed responses.")
+st.write("Ask questions about Equifax's cybersecurity breach in 2017 and get detailed responses.")
 
 user_query = st.text_input("Enter your query:")
 
