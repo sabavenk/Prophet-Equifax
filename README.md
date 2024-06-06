@@ -56,11 +56,13 @@ The project includes an evaluations folder with three files, each representing d
 - Benchmark Approach: This file contains the initial benchmark approach for evaluating the question bank.
 - AI-Generated Question Bank: This file includes evaluations with AI-generated questions.
 - Refined Prompts and Question Bank: This file contains evaluations with refined prompts and an improved question bank.
+
 Each approach was evaluated on the same set of questions compared to expert answers. The scores (0-100) were as follows:
 
 - Benchmark Approach: 71.25
 - AI-Generated Question Bank: 76.925
 - Refined Prompts and Question Bank: 78.25
+
 The evaluations were conducted by me and vetted by my brother, a cybersecurity analyst who has worked with this data before for a report.
 
 ### Next Steps
